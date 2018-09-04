@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import Pos from './pages/pos/pos'
-import Exchange from './pages/exchange/exchange'
+import Exchange from './pages/exchange/list'
+import Detail from './pages/exchange/detail'
 import Setting from './pages/setting/setting'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {HashRouter as Router, Route, Link} from 'react-router-dom'
 
 class App extends Component {
   test() {
@@ -11,17 +12,18 @@ class App extends Component {
   }
   render() {
     return (
-        <Router>
+        <Router basename="/testbase">
           <div className="App">
-            <ul>
-              <li><Link to="/">POS开单</Link></li>
-              <li><Link to="/exchange">退换货</Link></li>
-              <li><Link to="/setting">设置</Link></li>
+            <ul className="menu">
+              <li><Link to="/" replace>POS开单</Link></li>
+              <li><Link to="/exchange/list" replace>退换货</Link></li>
+              <li><Link to="/setting" replace>设置</Link></li>
             </ul>
             <div className="content">
               <Route exact path="/" component={Pos}/>
-              <Route path="/exchange" component={Exchange}/>
-              <Route path="/Setting" component={Setting}/>
+              <Route path="/exchange/list" component={Exchange}/>
+              <Route path="/setting" component={Setting}/>
+              <Route path="/exchange/detail/:billNo" component={Detail}/>
             </div>
           </div>
         </Router>

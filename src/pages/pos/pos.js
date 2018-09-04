@@ -5,6 +5,8 @@ import React from 'react'
 
 import {Button, Table} from 'antd'
 import {columns, tbData} from './config'
+import {withRouter} from 'react-router-dom'
+import { Redirect  } from 'react-router';
 
 class Pos extends React.Component {
   constructor(props) {
@@ -16,7 +18,7 @@ class Pos extends React.Component {
       endDate: '2016-12-23'
     };
 
-    this.handleClick = this.pickUp.bind(this);
+    this.pickUp = this.pickUp.bind(this);
     this.getData = this.getData.bind(this);
   }
 
@@ -25,10 +27,11 @@ class Pos extends React.Component {
   }
 
   pickUp(e) {
-    this.setState({
+/*    this.setState({
       loading: true
     });
-    this.getData();
+    this.getData();*/
+    this.props.history.push('/setting');
   }
 
 
@@ -41,15 +44,20 @@ class Pos extends React.Component {
 
   render() {
     var bpage=false;
+    var bRedirect=false;
+    if (bRedirect) {
+      return (<Redirect to="/setting" />)
+    } else
     return (
       <div >
         <Button type="ghost" onClick={this.pickUp}>挂单</Button>
         <Button type="ghost" onClick={this.pickUp}>清空商品</Button>
-        <Table pagination={bpage}  rowKey="id" dataSource={this.state.dataSource} columns={columns} loading={this.state.loading}/>
+        <Table pagination={bpage}  rowKey="id" loading={this.state.loading}
+          dataSource={this.state.dataSource} columns={columns} />
       </div>
     )
   }
 }
 
-export default Pos;
+export default withRouter(Pos);
 

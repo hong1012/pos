@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.less';
 import Pos from './pages/pos/pos'
 import Exchange from './pages/exchange/list'
 import Detail from './pages/exchange/detail'
@@ -12,7 +12,7 @@ class App extends Component {
   }
   render() {
     return (
-        <Router basename="/testbase">
+        <Router>
           <div className="App">
             <ul className="menu">
               <li><Link to="/" replace>POS开单</Link></li>

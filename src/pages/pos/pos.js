@@ -7,23 +7,38 @@ import {Button, Table} from 'antd'
 import {columns, tbData} from './config'
 import {withRouter} from 'react-router-dom'
 import { Redirect  } from 'react-router';
+import { apiCard  } from '../../utils/api';
+// import axios from 'axios'
 
 class Pos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dataSource: [],
-      loading: false,
-      startDate: '2016-12-15',
-      endDate: '2016-12-23'
+      loading: false
     };
 
     this.pickUp = this.pickUp.bind(this);
+    this.search = this.search.bind(this);
     this.getData = this.getData.bind(this);
   }
 
   componentDidMount() {
     this.getData();
+  }
+
+  search() {
+    apiCard.getAllStore().then(res => {
+      console.log(res);
+    });
+    /*let url = 'https://douban.uieee.com/v2/book/1220562';
+    axios.get(url)
+      .then(function(response){
+        console.log(response);
+      })
+      .catch(function(err){
+        console.log(err);
+      });*/
   }
 
   pickUp(e) {
@@ -50,6 +65,7 @@ class Pos extends React.Component {
     } else
     return (
       <div >
+        <Button type="ghost" onClick={this.search}>查询</Button>
         <Button type="ghost" onClick={this.pickUp}>挂单</Button>
         <Button type="ghost" onClick={this.pickUp}>清空商品</Button>
         <Table pagination={bpage}  rowKey="id" loading={this.state.loading}

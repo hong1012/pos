@@ -2,6 +2,7 @@
  * Created by hong on 2018/8/31.
  */
 import React from 'react'
+import './setting.less';
 
 class Setting extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Setting extends React.Component {
 
   render() {
     return (
-      <div >
+      <div className="setting-view">
         设置
       </div>
     )

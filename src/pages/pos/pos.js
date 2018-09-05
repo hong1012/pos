@@ -65,9 +65,9 @@ class Pos extends React.Component {
     } else
     return (
       <div >
-        <Button type="ghost" onClick={this.search}>查询</Button>
-        <Button type="ghost" onClick={this.pickUp}>挂单</Button>
-        <Button type="ghost" onClick={this.pickUp}>清空商品</Button>
+        <Button type="primary" onClick={this.search}>查询</Button>
+        <Button type="primary" onClick={this.pickUp}>挂单</Button>
+        <Button type="primary" onClick={this.pickUp}>清空商品</Button>
         <Table pagination={bpage}  rowKey="id" loading={this.state.loading}
           dataSource={this.state.dataSource} columns={columns} />
       </div>

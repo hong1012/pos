@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import './assets/css/base.less';
 import './App.less';
+import React, { Component } from 'react';
 import Pos from './pages/pos/pos'
 import Exchange from './pages/exchange/list'
 import Detail from './pages/exchange/detail'
